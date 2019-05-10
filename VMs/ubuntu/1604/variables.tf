@@ -11,7 +11,7 @@ variable "proxmox_hosts" {
 
 variable "proxmox_api" {
     description = "proxmox API eg, https://proxmox1:8006/api2/json "
-    default = ""
+    default     = ""
 }
 
 

@@ -150,7 +150,7 @@ variable "path_to_playbook" {
 
 variable "vm_template" {
     description = "Name of Ubuntu 16.04 template in Proxmox"
-    default = ""
+    default     = ""
 }
 
 variable "dns_suffix" {
@@ -160,5 +160,5 @@ variable "dns_suffix" {
 
 variable "ansible_ssh_key_private" {
     description = "ansible key to use when provisioning VM"
-    default = ""
+    default     = ""
 }
