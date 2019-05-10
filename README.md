@@ -94,10 +94,11 @@ module "test-vm" {
 
 }
 
-
+```
 
 ## To-Do
 
 * Resize disk on provisioning
 * Provide more examples
 * Add useful outputs
+* Create `Makefile` for provider configuration
