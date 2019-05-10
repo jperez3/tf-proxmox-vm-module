@@ -41,9 +41,6 @@ terraform-provider-proxmox_v1.0.0    terraform-provisioner-proxmox_v1.0.0
 _Note: that's not the given version number, it's just what I set because Terraform complains about needing a version number_
 
 
-* Test terraform without module first to make sure the provider is working.
-
-
 
 
 
@@ -51,7 +48,7 @@ _Note: that's not the given version number, it's just what I set because Terrafo
 
 #### Proxmox
 
-* Provisioning two host at a time is a no go. I speculate it's something to do with the proxmox api, but I'm not quite sure. Help would be greatly appreciated
+* Provisioning two VMs at a time is not working at this time. It looks like there is problem when the proxmox provider requests the next `vmid`. I have created an [issue](https://github.com/Telmate/terraform-provider-proxmox/issues/45) for this problem.
 
 #### Terraform
 
@@ -59,7 +56,7 @@ _Note: that's not the given version number, it's just what I set because Terrafo
 
 #### VMs
 
-* The Ubuntu 16.04 image I used couldn't set the network interface nameservers right, so I added additional `remote-exec` instructions to add it.
+* `cloud-init` was having issues setting DNS for VM networking, so I added additional `remote-exec` instructions to add nameservers.
 * `cloud-init` is good for setting the hostname, IP address, gateway, but I moved away from it for anything else.
 
 
@@ -101,4 +98,5 @@ module "test-vm" {
 * Resize disk on provisioning
 * Provide more examples
 * Add useful outputs
+* Add Vault for secrets
 * Create `Makefile` for provider configuration
