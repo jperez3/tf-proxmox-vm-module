@@ -54,9 +54,14 @@ resource "proxmox_vm_qemu" "vm" {
     }
     ### Run ansible
     provisioner "local-exec" {
-        command = "ansible-playbook -u ${var.vm_re_connection_user} -i ${var.vm_network_cidr}.${count.index + var.vm_network_last_octet}, -e 'ansible_python_interpreter=/usr/bin/python3' --private-key ${var.ansible_ssh_key_private} ${var.path_to_playbook} "
+        command = "ansible-playbook -u ${var.vm_re_connection_user} -i ${var.vm_network_cidr}.${count.index + var.vm_network_last_octet}, -e 'ansible_python_interpreter=/usr/bin/python3' --private-key ${var.ansible_ssh_key_private} base.yml"
         on_failure = "continue"
     }
+
+    provisioner "local-exec" {
+        command = "ansible-playbook -u ${var.vm_re_connection_user} -i ${var.vm_network_cidr}.${count.index + var.vm_network_last_octet}, -e 'ansible_python_interpreter=/usr/bin/python3' --private-key ${var.ansible_ssh_key_private} ${var.path_to_playbook} "
+        on_failure = "continue"
+    }    
     
     ### Removes host from known hosts when destroyed
     provisioner "local-exec" {
