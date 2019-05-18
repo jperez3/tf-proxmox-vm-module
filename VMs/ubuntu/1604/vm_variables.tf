@@ -162,3 +162,8 @@ variable "ansible_ssh_key_private" {
     description = "ansible key to use when provisioning VM"
     default     = ""
 }
+
+variable "vmid" {
+    description = "vmid for instance"
+    default     = ""
+}

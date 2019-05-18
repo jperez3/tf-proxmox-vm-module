@@ -3,7 +3,8 @@ resource "proxmox_vm_qemu" "vm" {
 
 	count       = "${var.vm_count}"
     name        = "${var.vm_type}${count.index + 1}.${var.service}.${var.env}.${var.dns_suffix}"
-	desc        = "${var.vm_description}"
+	vmid        = "${var.vmid}"
+    desc        = "${var.vm_description}"
 	target_node = "${element(var.proxmox_hosts, count.index)}"
 	clone       = "${var.vm_template}"
 	
